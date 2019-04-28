@@ -12,7 +12,7 @@ const TableListCont = styled.div`
 `;
 
 
-const TabLink0 = styled.div`
+const TabLink = styled.div`
   display: inline-block;
   width: 110px;
   cursor: pointer;
@@ -21,20 +21,9 @@ const TabLink0 = styled.div`
   font-weight: 600;
   height: 40px;
   line-height: 40px;
-  color: ${props => props.SelectedtabId === 0 ? 'rgb(255, 255, 255)' : ' #E0E0E0'};
-  border-bottom: ${props => props.SelectedtabId === 0 ? '3px solid #E91E63' : '3px solid transparent'};
+  color: ${props => props.SelectedtabId === props.id ? 'rgb(255, 255, 255)' : ' #E0E0E0'};
+  border-bottom: ${props => props.SelectedtabId === props.id ? '3px solid #E91E63' : '3px solid transparent'};
 `;
-
-const TabLink1 = styled(TabLink0)`
-  color: ${props => props.SelectedtabId === 1 ? 'rgb(255, 255, 255)' : ' #E0E0E0'};
-  border-bottom: ${props => props.SelectedtabId === 1 ? '3px solid #E91E63' : '3px solid transparent'};
-`;
-
-
-const TabLink2 = styled(TabLink0)`
-  color: ${props => props.SelectedtabId === 2 ? 'rgb(255, 255, 255)' : ' #E0E0E0'};
-  border-bottom: ${props => props.SelectedtabId === 2 ? '3px solid #E91E63' : '3px solid transparent'};
-  `
 
 
 
@@ -57,16 +46,15 @@ class Tabs extends React.Component {
     const tabLinksInf = [
       {name: 'ITEM ONE', id: 0},
       {name: 'ITEM TWO', id: 1},
-      {name: 'ITEM ONE', id: 2}
+      {name: 'ITEM THREE', id: 2}
     ];
 
     return (
       <div className='tabs'>
 
         <TableListCont>
-            <TabLink0 SelectedtabId={this.state.SelectedTabLink}  onClick={() => this.selectTab(tabLinksInf[0]['id'])}>ITEM ONE</TabLink0>
-            <TabLink1 SelectedtabId={this.state.SelectedTabLink}  onClick={() => this.selectTab(tabLinksInf[1]['id'])}>ITEM TWO</TabLink1>
-            <TabLink2 SelectedtabId={this.state.SelectedTabLink} onClick={() => this.selectTab(tabLinksInf[2]['id'])}>ITEM THREE</TabLink2>
+            {tabLinksInf.map(item =>
+              <TabLink SelectedtabId={this.state.SelectedTabLink} id={item['id']} onClick={() => this.selectTab(item['id'])}>{item['name']}</TabLink>)}
         </TableListCont>
 
         {this.state.SelectedTabLink === 0 && <TabContent0>Item One</TabContent0>}
