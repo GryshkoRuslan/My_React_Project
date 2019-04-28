@@ -54,7 +54,7 @@ class Tabs extends React.Component {
 
         <TableListCont>
             {tabLinksInf.map(item =>
-              <TabLink SelectedtabId={this.state.SelectedTabLink} id={item['id']} onClick={() => this.selectTab(item['id'])}>{item['name']}</TabLink>)}
+              <TabLink SelectedtabId={this.state.SelectedTabLink} id={item['id']} key={String(item['id'])} onClick={() => this.selectTab(item['id'])}>{item['name']}</TabLink>)}
         </TableListCont>
 
         {this.state.SelectedTabLink === 0 && <TabContent0>Item One</TabContent0>}
