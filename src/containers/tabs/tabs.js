@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components"
 import { StyledTabsContainer, TableListCont, TabLink } from "styles/styledTabsParts";
-import { tabLinksNames, tabNames } from "constants/tabsConstants";
+import { tabNames } from "constants/tabsConstants";
 import { TabContent0 } from "components/tabsContents/TabContent0";
 import { TabContent1 } from "components/tabsContents/TabContent1";
 import { TabContent2 } from "components/tabsContents/TabContent2";
