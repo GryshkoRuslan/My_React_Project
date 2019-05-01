@@ -1,50 +1,50 @@
 import React from "react";
-import "containers/tabs/tabs_style.css";
-import { TableListCont, TabLink } from "styles/styled_tabs_parts.js";
-import { tabLinksInf } from "constants/tabs_constants.js";
-import TabContent0 from "components/tabs_contents/TabContent0.js";
-import TabContent1 from "components/tabs_contents/TabContent1.js";
-import TabContent2 from "components/tabs_contents/TabContent2.js";
+import styled from "styled-components"
+import { StyledTabsContainer, TableListCont, TabLink } from "styles/styledTabsParts";
+import { tabLinksNames, tabNames } from "constants/tabsConstants";
+import { TabContent0 } from "components/tabsContents/TabContent0";
+import { TabContent1 } from "components/tabsContents/TabContent1";
+import { TabContent2 } from "components/tabsContents/TabContent2";
+
+
+
+
 
 class Tabs extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { SelectedTabLink: "first-content" };
-    this.selectTab = this.selectTab.bind(this);
-  }
 
-  selectTab(id) {
+  state = { selectedTabLink: tabNames.ONE };
+  selectTab = (tabName) => {
     this.setState(state => ({
-      SelectedTabLink: id
+      selectedTabLink: tabName
     }));
   }
 
   render() {
     return (
-      <div className="tabs">
+      <StyledTabsContainer>
         <TableListCont>
-          {tabLinksInf.map(item => (
+          {Object.keys(tabNames).map(tabName => (
             <TabLink
-              SelectedtabId={this.state.SelectedTabLink}
-              id={item["id"]}
-              key={item["id"]}
-              onClick={() => this.selectTab(item["id"])}
+              selectedtabId={this.state.selectedTabLink}
+              id={tabNames[tabName]}
+              key={tabNames[tabName]}
+              onClick={() => this.selectTab(tabNames[tabName])}
             >
-              {item["name"]}
+              {`ITEM ${tabName}`}
             </TabLink>
           ))}
         </TableListCont>
 
-        {this.state.SelectedTabLink === "first-content" && (
-          <TabContent0>Item One</TabContent0>
+        {this.state.selectedTabLink === tabNames.ONE && (
+          <TabContent0 />
         )}
-        {this.state.SelectedTabLink === "second-content" && (
-          <TabContent1>Item Two</TabContent1>
+        {this.state.selectedTabLink === tabNames.TWO && (
+          <TabContent1 />
         )}
-        {this.state.SelectedTabLink === "third-content" && (
-          <TabContent2>Item Three</TabContent2>
+        {this.state.selectedTabLink === tabNames.THREE && (
+          <TabContent2 />
         )}
-      </div>
+      </StyledTabsContainer>
     );
   }
 }
