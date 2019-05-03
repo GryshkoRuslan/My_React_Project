@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { tabNames } from "constants/tabsConstants";
 
 export const StyledTabsContainer = styled.div`
   width: 100%;
@@ -12,6 +13,8 @@ export const StyledTabsContainer = styled.div`
 export const TableListCont = styled.div`
   background: #03a9f4;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  position: relative;
+  z-index: 3;
 `;
 
 export const TabLink = styled.div`
@@ -32,8 +35,11 @@ export const TabLink = styled.div`
 `;
 
 export const StyledTabContent = styled.div`
-  min-height: 80px;
+  position: relative;
+  z-index: 1;
+  min-height: 150px;
   border: 1px solid rgb(227, 227, 227);
   border-top: none;
   padding: 10px;
+  background: ${props => props.id === tabNames.ONE ? " #eeeeee" : ""};
 `;

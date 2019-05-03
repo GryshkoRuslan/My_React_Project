@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components"
 import { StyledTabsContainer, TableListCont, TabLink } from "styles/styledTabsParts";
 import { tabNames } from "constants/tabsConstants";
 import { TabContent0 } from "components/tabsContents/TabContent0";
