@@ -1,22 +1,22 @@
 import React from "react";
-import { StyledTabsContainer, TableListCont, TabLink } from "styles/styledTabsParts";
+import {
+  StyledTabsContainer,
+  TableListCont,
+  TabLink
+} from "styles/styledTabsParts";
 import { tabNames } from "constants/tabsConstants";
-import { TabContent0 } from "components/tabsContents/TabContent0";
-import { TabContent1 } from "components/tabsContents/TabContent1";
-import { TabContent2 } from "components/tabsContents/TabContent2";
-
-
-
-
+import { TabContent0 } from "components/TabsContents/TabContent0";
+import { TabContent1 } from "components/TabsContents/TabContent1";
+import { TabContent2 } from "components/TabsContents/TabContent2";
 
 class Tabs extends React.Component {
-
   state = { selectedTabLink: tabNames.ONE };
-  selectTab = (tabName) => {
+
+  selectTab = tabName => {
     this.setState(state => ({
       selectedTabLink: tabName
     }));
-  }
+  };
 
   render() {
     return (
@@ -34,15 +34,9 @@ class Tabs extends React.Component {
           ))}
         </TableListCont>
 
-        {this.state.selectedTabLink === tabNames.ONE && (
-          <TabContent0 />
-        )}
-        {this.state.selectedTabLink === tabNames.TWO && (
-          <TabContent1 />
-        )}
-        {this.state.selectedTabLink === tabNames.THREE && (
-          <TabContent2 />
-        )}
+        {this.state.selectedTabLink === tabNames.ONE && <TabContent0 />}
+        {this.state.selectedTabLink === tabNames.TWO && <TabContent1 />}
+        {this.state.selectedTabLink === tabNames.THREE && <TabContent2 />}
       </StyledTabsContainer>
     );
   }

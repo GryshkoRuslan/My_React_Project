@@ -1,7 +1,9 @@
 import React from "react";
 
 export const ExpPanelContent2 = () => (
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  Suspendisse malesuada lacus ex, sit amet blandit leo
-  lobortis eget.</p>
+  <p>
+    Идейные соображения высшего порядка, а также укрепление и развитие структуры
+    обеспечивает широкому кругу (специалистов) участие в формировании новых
+    предложений. 
+  </p>
 );

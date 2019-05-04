@@ -4,9 +4,6 @@ import {
   ExpPanelContainer,
   ExpPanelLabel
 } from "styles/styledExpPanelsParts";
-import { ExpPanelContent0 } from "components/expPansContents/expPanelContent0";
-import { ExpPanelContent1 } from "components/expPansContents/expPanelContent1";
-import { ExpPanelContent2 } from "components/expPansContents/expPanelContent2";
 import { expPanelAttrs } from "constants/expPanelConstants";
 
 export class ExpansionPanels extends React.Component {
@@ -15,7 +12,8 @@ export class ExpansionPanels extends React.Component {
     panelTwoIsOpended: false,
     panelThreeIsOpended: false
   };
-  ShowHidePanel = selectedPanel => {
+
+  showHidePanel = selectedPanel => {
     this.setState(prevState => ({
       [selectedPanel]: !prevState[selectedPanel]
     }));
@@ -25,14 +23,17 @@ export class ExpansionPanels extends React.Component {
     return (
       <StyledWraperExpPanel>
         {expPanelAttrs.map(attr => (
-          <ExpPanelContainer isOpened={this.state[attr.stateName]}>
+          <ExpPanelContainer
+            key={attr.panelName}
+            isOpened={this.state[attr.stateName]}
+          >
             <ExpPanelLabel
               isOpened={this.state[attr.stateName]}
-              onClick={() => this.ShowHidePanel(attr.stateName)}
+              onClick={() => this.showHidePanel(attr.stateName)}
             >
               <span>{attr.panelName}</span>
             </ExpPanelLabel>
-            {this.state[attr.stateName] === true && <ExpPanelContent0 />}
+            {this.state[attr.stateName] && <attr.contentName />}
           </ExpPanelContainer>
         ))}
       </StyledWraperExpPanel>

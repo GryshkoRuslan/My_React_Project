@@ -1,7 +1,8 @@
 import React from "react";
 
 export const ExpPanelContent1 = () => (
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  Suspendisse malesuada lacus ex, sit amet blandit leo
-  lobortis eget.</p>
+  <p>
+    Значимость этих проблем настолько очевидна, что начало повседневной работы
+    по формированию позиции позволяет оценить значение новых предложений. 
+  </p>
 );

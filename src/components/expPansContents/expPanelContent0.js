@@ -1,7 +1,10 @@
 import React from "react";
 
 export const ExpPanelContent0 = () => (
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  Suspendisse malesuada lacus ex, sit amet blandit leo
-  lobortis eget.</p>
+  <p>
+    С другой стороны рамки и место обучения кадров способствует подготовки и
+    реализации форм развития. Товарищи! укрепление и развитие структуры
+    обеспечивает широкому кругу (специалистов) участие в формировании дальнейших
+    направлений развития.
+  </p>
 );
