@@ -15,17 +15,11 @@ export class ExpansionPanels extends React.Component {
   };
 
   showHidePanel = selectedPanel => {
-    if (this.state.openedPanels.includes(selectedPanel)) {
-      this.setState(prevState => ({
-        openedPanels: prevState.openedPanels.filter(
-          panel => panel != selectedPanel
-        )
-      }));
-    } else {
-      this.setState(prevState => ({
-        openedPanels: [...prevState.openedPanels, selectedPanel]
-      }));
-    }
+    this.setState(prevState => ({
+      openedPanels: prevState.openedPanels.includes(selectedPanel)
+        ? prevState.openedPanels.filter(panel => panel !== selectedPanel)
+        : [...prevState.openedPanels, selectedPanel]
+    }));
   };
 
   render() {
@@ -44,17 +38,11 @@ export class ExpansionPanels extends React.Component {
               <span>{attr.panelName}</span>
             </ExpPanelLabel>
             {attr.panelName === "Expansion Panel 1" &&
-              openedPanels.includes(attr.stateName) && (
-                <ExpPanelContent0 />
-              )}
+              openedPanels.includes(attr.stateName) && <ExpPanelContent0 />}
             {attr.panelName === "Expansion Panel 2" &&
-              openedPanels.includes(attr.stateName) && (
-                <ExpPanelContent1 />
-              )}
+              openedPanels.includes(attr.stateName) && <ExpPanelContent1 />}
             {attr.panelName === "Expansion Panel 3" &&
-              openedPanels.includes(attr.stateName) && (
-                <ExpPanelContent2 />
-              )}
+              openedPanels.includes(attr.stateName) && <ExpPanelContent2 />}
           </ExpPanelContainer>
         ))}
       </StyledWraperExpPanel>

@@ -1,12 +1,12 @@
 import React from "react";
 import { tableTitles,  tableData } from "constants/tableConstants";
-import { TableHeaderStyled, TableHeaderCellStyled } from "styles/styledTableParts";
+import { TableHeaderCellStyled } from "styles/styledTableParts";
 
 export const TableHeader = () => (
-  <TableHeaderStyled>
+  <React.Fragment>
     {tableTitles.map(title => (
-      <TableHeaderCellStyled>{title}</TableHeaderCellStyled>
+      <TableHeaderCellStyled key={title}>{title}</TableHeaderCellStyled>
     ))}
-  </TableHeaderStyled>
+  </React.Fragment>
 
 );
