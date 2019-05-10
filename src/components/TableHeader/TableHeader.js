@@ -1,10 +1,9 @@
 import React from "react";
-import { tableTitles,  tableData } from "constants/tableConstants";
 import { TableHeaderCellStyled } from "styles/styledTableParts";
 
-export const TableHeader = () => (
+export const TableHeader = ({titles}) => (
   <React.Fragment>
-    {tableTitles.map(title => (
+    {titles.map(title => (
       <TableHeaderCellStyled key={title}>{title}</TableHeaderCellStyled>
     ))}
   </React.Fragment>

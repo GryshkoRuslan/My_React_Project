@@ -8,6 +8,7 @@ import { tabNames } from "constants/tabsConstants";
 import { TabContent0 } from "components/TabsContents/TabContent0";
 import { TabContent1 } from "components/TabsContents/TabContent1";
 import { TabContent2 } from "components/TabsContents/TabContent2";
+import { tableTitles, tableData } from "constants/tableConstants";
 
 class Tabs extends React.Component {
   state = { selectedTabLink: tabNames.ONE };
@@ -35,7 +36,9 @@ class Tabs extends React.Component {
         </TableListCont>
 
         {this.state.selectedTabLink === tabNames.ONE && <TabContent0 />}
-        {this.state.selectedTabLink === tabNames.TWO && <TabContent1 />}
+        {this.state.selectedTabLink === tabNames.TWO && (
+          <TabContent1 tableTitles={tableTitles} tableData={tableData} />
+        )}
         {this.state.selectedTabLink === tabNames.THREE && <TabContent2 />}
       </StyledTabsContainer>
     );

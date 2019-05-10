@@ -5,6 +5,7 @@ import { tabNames } from "constants/tabsConstants";
 export const StyledTabsContainer = styled.div`
   width: 100%;
   max-width: 700px;
+  min-width: 550px;
   box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.4);
   margin-top: 40px;
   margin-left: 10px;
@@ -41,5 +42,6 @@ export const StyledTabContent = styled.div`
   border: 1px solid rgb(227, 227, 227);
   border-top: none;
   padding: 10px;
-  background: ${props => props.id === tabNames.ONE || tabNames.TWO ? " #eeeeee" : ""};
+  background: ${props =>
+    props.id === tabNames.ONE || tabNames.TWO ? " #eeeeee" : ""};
 `;
