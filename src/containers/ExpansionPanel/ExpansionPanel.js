@@ -9,21 +9,14 @@ import { ExpPanelContent1 } from "components/ExpPansContents/ExpPanelContent1";
 import { ExpPanelContent2 } from "components/ExpPansContents/ExpPanelContent2";
 import { expPanelAttrs } from "constants/expPanelConstants";
 
-export class ExpansionPanels extends React.Component {
-  state = {
-    openedPanels: []
-  };
 
-  showHidePanel = selectedPanel => {
-    this.setState(prevState => ({
-      openedPanels: prevState.openedPanels.includes(selectedPanel)
-        ? prevState.openedPanels.filter(panel => panel !== selectedPanel)
-        : [...prevState.openedPanels, selectedPanel]
-    }));
-  };
+
+export class ExpansionPanels extends React.Component {
 
   render() {
-    const { openedPanels } = this.state;
+
+    const { openedPanels, showHidePanel } = this.props;
+
     return (
       <StyledWraperExpPanel>
         {expPanelAttrs.map(attr => (
@@ -33,7 +26,7 @@ export class ExpansionPanels extends React.Component {
           >
             <ExpPanelLabel
               isOpened={openedPanels.includes(attr.stateName)}
-              onClick={() => this.showHidePanel(attr.stateName)}
+              onClick={() => showHidePanel(attr.stateName)}
             >
               <span>{attr.panelName}</span>
             </ExpPanelLabel>

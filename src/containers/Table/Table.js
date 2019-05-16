@@ -1,8 +1,8 @@
 import React from "react";
 import { TableWrapper, GridContainer } from "styles/styledTableParts";
-import { TableHeader } from "components/TableHeader/TableHeader";
-import { TableBody } from "components/TableBody/TableBody";
-import { TableNavigation } from "components/TableNavigation/TableNavigation";
+import { TableHeader } from "components/Table/TableHeader/TableHeader";
+import { TableBody } from "components/Table/TableBody/TableBody";
+import { TableNavigation } from "components/Table/TableNavigation/TableNavigation";
 
 export class Table extends React.Component {
 

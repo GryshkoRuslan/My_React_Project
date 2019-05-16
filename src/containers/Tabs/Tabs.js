@@ -9,40 +9,40 @@ import { TabContent0 } from "components/TabsContents/TabContent0";
 import { TabContent1 } from "components/TabsContents/TabContent1";
 import { TabContent2 } from "components/TabsContents/TabContent2";
 import { tableTitles, tableData } from "constants/tableConstants";
+import { addTabsLogic } from "hocs/tabsLogic";
+
 
 class Tabs extends React.Component {
-  state = { selectedTabLink: tabNames.ONE };
-
-  selectTab = tabName => {
-    this.setState(state => ({
-      selectedTabLink: tabName
-    }));
-  };
 
   render() {
+
+    const { selectedTabLink, tabNames, selectTab } = this.props;
+
     return (
       <StyledTabsContainer>
         <TableListCont>
           {Object.keys(tabNames).map(tabName => (
             <TabLink
-              selectedtabId={this.state.selectedTabLink}
+              selectedtabId={selectedTabLink}
               id={tabNames[tabName]}
               key={tabNames[tabName]}
-              onClick={() => this.selectTab(tabNames[tabName])}
+              onClick={() => selectTab(tabNames[tabName])}
             >
               {`ITEM ${tabName}`}
             </TabLink>
           ))}
         </TableListCont>
 
-        {this.state.selectedTabLink === tabNames.ONE && <TabContent0 />}
-        {this.state.selectedTabLink === tabNames.TWO && (
+        {selectedTabLink === tabNames.ONE && <TabContent0 />}
+        {selectedTabLink === tabNames.TWO && (
           <TabContent1 tableTitles={tableTitles} tableData={tableData} />
         )}
-        {this.state.selectedTabLink === tabNames.THREE && <TabContent2 />}
+        {selectedTabLink === tabNames.THREE && <TabContent2 />}
       </StyledTabsContainer>
     );
   }
 }
 
-export default Tabs;
+const TabsWithLogic = addTabsLogic(Tabs, tabNames);
+
+export default TabsWithLogic;
