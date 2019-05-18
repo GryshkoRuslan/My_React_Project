@@ -1,27 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 
-export class ExpansionPanelsLogic extends React.Component {
+export const ExpansionPanelsLogic = (props) => {
+  const [openedPanels, setOpenedPanels] = useState([]);
 
-  state = {
-    openedPanels: []
+  const showHidePanel = selectedPanel => {
+    setOpenedPanels(
+      openedPanels.includes(selectedPanel)
+        ? openedPanels.filter(panel => panel !== selectedPanel)
+        : [...openedPanels, selectedPanel]
+    )
   };
 
-  showHidePanel = selectedPanel => {
-    this.setState(prevState => ({
-      openedPanels: prevState.openedPanels.includes(selectedPanel)
-        ? prevState.openedPanels.filter(panel => panel !== selectedPanel)
-        : [...prevState.openedPanels, selectedPanel]
-    }));
-  };
-
-  render() {
-
-    const { openedPanels } = this.state;
-
-    return (
-      <React.Fragment>
-        {this.props.render(openedPanels, this.showHidePanel)}
-      </React.Fragment>
-    );
-  }
-}
+  return (
+    <React.Fragment>
+      {props.render(openedPanels, showHidePanel)}
+    </React.Fragment>
+  );
+};

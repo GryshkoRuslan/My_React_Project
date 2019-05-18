@@ -1,35 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { TableWrapper, GridContainer } from "styles/styledTableParts";
 import { TableHeader } from "components/Table/TableHeader/TableHeader";
 import { TableBody } from "components/Table/TableBody/TableBody";
 import { TableNavigation } from "components/Table/TableNavigation/TableNavigation";
 
-export class Table extends React.Component {
+export const Table = (props) => {
 
-  state = {
-    openedPage: 1,
-    rowsPerPage: 3
-  };
+  const [openedPage, setOpenedPage] = useState(1);
+  const [rowsPerPage, setOrowsPerPage] = useState(3);
 
-  changePage = selectedPage => {
+  const changePage = selectedPage => {
 
-    const { openedPage, rowsPerPage } = this.state;
-    const { tableTitles, tableData } = this.props;
-
+    const { tableTitles, tableData } = props;
     const pageCounts = Math.ceil(tableData.length / rowsPerPage);
 
     if (selectedPage < 1 || selectedPage > pageCounts) {
       return;
     }
-    this.setState(PrevState => ({
-      openedPage: selectedPage
-    }));
+
+    setOpenedPage(selectedPage)
   };
 
-  render() {
-
-    const { tableTitles, tableData } = this.props;
-    const { openedPage, rowsPerPage } = this.state;
+    const { tableTitles, tableData } = props;
 
     const pageCounts = Math.ceil(tableData.length / rowsPerPage);
     const lastIndex = openedPage * rowsPerPage;
@@ -43,7 +35,7 @@ export class Table extends React.Component {
           <TableBody data={visibleRows} />
         </GridContainer>
         <TableNavigation
-          onClick={this.changePage}
+          onClick={changePage}
           openedPage={openedPage}
           rowsCount={tableData.length}
           firstIndex={firstIndex}
@@ -51,5 +43,4 @@ export class Table extends React.Component {
         />
       </TableWrapper>
     );
-  }
 }

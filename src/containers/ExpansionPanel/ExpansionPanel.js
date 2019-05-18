@@ -11,11 +11,9 @@ import { expPanelAttrs } from "constants/expPanelConstants";
 
 
 
-export class ExpansionPanels extends React.Component {
+export const ExpansionPanels = (props) => {
 
-  render() {
-
-    const { openedPanels, showHidePanel } = this.props;
+    const { openedPanels, showHidePanel } = props;
 
     return (
       <StyledWraperExpPanel>
@@ -40,5 +38,4 @@ export class ExpansionPanels extends React.Component {
         ))}
       </StyledWraperExpPanel>
     );
-  }
 }

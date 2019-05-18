@@ -1,24 +1,22 @@
-import React from 'react';
-
+import React, { useState } from "react";
 
 export const addTabsLogic = (WrappedCompoment, tabNames) => {
-  return class TabsLogic extends React.Component {
-    state = { selectedTabLink: tabNames.ONE };
 
-    selectTab = tabName => {
-      this.setState(state => ({
-        selectedTabLink: tabName
-      }));
-    };
+  const TabsLogic = () => {
 
-    render() {
-      return (
+    const [ selectedTabLink, changeTabLink ] = useState(tabNames.ONE);
+
+    const selectTab = tabName => (
+      changeTabLink(tabName)
+    );
+
+    return (
         <WrappedCompoment
-          selectedTabLink={this.state.selectedTabLink}
+          selectedTabLink={selectedTabLink}
           tabNames={tabNames}
-          selectTab={this.selectTab}
+          selectTab={selectTab}
         />
       );
-    }
   };
+  return TabsLogic
 };

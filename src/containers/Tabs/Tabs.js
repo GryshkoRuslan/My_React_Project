@@ -12,11 +12,9 @@ import { tableTitles, tableData } from "constants/tableConstants";
 import { addTabsLogic } from "hocs/tabsLogic";
 
 
-class Tabs extends React.Component {
+const Tabs = (props) => {
 
-  render() {
-
-    const { selectedTabLink, tabNames, selectTab } = this.props;
+    const { selectedTabLink, tabNames, selectTab } = props;
 
     return (
       <StyledTabsContainer>
@@ -40,7 +38,6 @@ class Tabs extends React.Component {
         {selectedTabLink === tabNames.THREE && <TabContent2 />}
       </StyledTabsContainer>
     );
-  }
 }
 
 const TabsWithLogic = addTabsLogic(Tabs, tabNames);
