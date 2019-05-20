@@ -4,14 +4,13 @@ import { TableHeader } from "components/Table/TableHeader/TableHeader";
 import { TableBody } from "components/Table/TableBody/TableBody";
 import { TableNavigation } from "components/Table/TableNavigation/TableNavigation";
 
-export const Table = (props) => {
+export const Table = ({ tableTitles, tableData }) => {
 
   const [openedPage, setOpenedPage] = useState(1);
-  const [rowsPerPage, setOrowsPerPage] = useState(3);
+  const [rowsPerPage, setRowsPerPage] = useState(3);
 
   const changePage = selectedPage => {
 
-    const { tableTitles, tableData } = props;
     const pageCounts = Math.ceil(tableData.length / rowsPerPage);
 
     if (selectedPage < 1 || selectedPage > pageCounts) {
@@ -20,8 +19,6 @@ export const Table = (props) => {
 
     setOpenedPage(selectedPage)
   };
-
-    const { tableTitles, tableData } = props;
 
     const pageCounts = Math.ceil(tableData.length / rowsPerPage);
     const lastIndex = openedPage * rowsPerPage;

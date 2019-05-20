@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { tabNames } from "constants/tabsConstants";
 
 export const StyledTabsContainer = styled.div`
   width: 100%;
@@ -39,9 +38,7 @@ export const StyledTabContent = styled.div`
   position: relative;
   z-index: 1;
   min-height: 150px;
-  border: 1px solid rgb(227, 227, 227);
-  border-top: none;
   padding: 10px;
-  background: ${props =>
-    props.id === tabNames.ONE || tabNames.TWO ? " #eeeeee" : ""};
+  background: ${({ currentTheme }) =>
+    currentTheme === "lightTheme" ? "#eeeeee" : "#303030"};
 `;

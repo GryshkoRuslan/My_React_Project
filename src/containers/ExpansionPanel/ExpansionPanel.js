@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   StyledWraperExpPanel,
   ExpPanelContainer,
@@ -8,21 +8,22 @@ import { ExpPanelContent0 } from "components/ExpPansContents/ExpPanelContent0";
 import { ExpPanelContent1 } from "components/ExpPansContents/ExpPanelContent1";
 import { ExpPanelContent2 } from "components/ExpPansContents/ExpPanelContent2";
 import { expPanelAttrs } from "constants/expPanelConstants";
+import { ThemeContext } from "contexts/themeContext";
 
 
-
-export const ExpansionPanels = (props) => {
-
-    const { openedPanels, showHidePanel } = props;
+export const ExpansionPanels = ({ openedPanels, showHidePanel }) => {
+  const [currentTheme, changeTheme] = useContext(ThemeContext);
 
     return (
       <StyledWraperExpPanel>
         {expPanelAttrs.map(attr => (
           <ExpPanelContainer
+            currentTheme={currentTheme}
             key={attr.panelName}
             isOpened={openedPanels.includes(attr.stateName)}
           >
             <ExpPanelLabel
+              currentTheme={currentTheme}
               isOpened={openedPanels.includes(attr.stateName)}
               onClick={() => showHidePanel(attr.stateName)}
             >

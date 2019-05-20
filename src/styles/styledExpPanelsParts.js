@@ -8,8 +8,14 @@ export const StyledWraperExpPanel = styled.div`
 
 export const ExpPanelContainer = styled.div`
   padding: 10px;
-  border-bottom: 1px solid #e0e0e0;
-  background: #ffffff;
+  background: ${({ currentTheme }) =>
+    currentTheme === "lightTheme" ? "#fafafa" : "#424242"};
+  color: ${({ currentTheme }) =>
+    currentTheme === "lightTheme" ? "black" : "#fff"};
+  border-bottom: ${({ currentTheme }) =>
+    currentTheme === "lightTheme"
+      ? "1px solid #bdbdbd"
+      : "1px solid rgba(81, 81, 81, 1)"};
   box-shadow: ${props =>
     props.isOpened
       ? "0 1px 1px 1px rgba(0, 0, 0, 0.3)"
@@ -29,8 +35,10 @@ export const ExpPanelLabel = styled.div`
     display: inline-block;
     width: 7px;
     height: 7px;
-    border-right: 2px solid #757575;
-    border-top: 2px solid #757575;
+    border-right: ${({ currentTheme }) =>
+      currentTheme === "lightTheme" ? "2px solid #757575" : "2px solid #bdbdbd"};
+    border-top: ${({ currentTheme }) =>
+      currentTheme === "lightTheme" ? "2px solid #757575" : "2px solid #bdbdbd"};
     transform: ${props =>
       props.isOpened ? "rotate(-45deg)" : "rotate(135deg)"};
     position: relative;

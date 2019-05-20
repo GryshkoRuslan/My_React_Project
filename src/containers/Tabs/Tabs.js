@@ -9,14 +9,19 @@ import { TabContent0 } from "components/TabsContents/TabContent0";
 import { TabContent1 } from "components/TabsContents/TabContent1";
 import { TabContent2 } from "components/TabsContents/TabContent2";
 import { tableTitles, tableData } from "constants/tableConstants";
+import { themes } from "constants/themeConstants";
 import { addTabsLogic } from "hocs/tabsLogic";
+import { ThemeContext } from "contexts/themeContext";
 
-
-const Tabs = (props) => {
-
-    const { selectedTabLink, tabNames, selectTab } = props;
-
-    return (
+const Tabs = ({
+  selectedTabLink,
+  tabNames,
+  selectTab,
+  currentTheme,
+  changeTheme
+}) => {
+  return (
+    <ThemeContext.Provider value={[currentTheme, changeTheme]}>
       <StyledTabsContainer>
         <TableListCont>
           {Object.keys(tabNames).map(tabName => (
@@ -37,9 +42,10 @@ const Tabs = (props) => {
         )}
         {selectedTabLink === tabNames.THREE && <TabContent2 />}
       </StyledTabsContainer>
-    );
-}
+    </ThemeContext.Provider>
+  );
+};
 
-const TabsWithLogic = addTabsLogic(Tabs, tabNames);
+const TabsWithLogic = addTabsLogic(Tabs, tabNames, themes);
 
 export default TabsWithLogic;
