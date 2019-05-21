@@ -12,7 +12,7 @@ import { ThemeContext } from "contexts/themeContext";
 
 
 export const ExpansionPanels = ({ openedPanels, showHidePanel }) => {
-  const [currentTheme, changeTheme] = useContext(ThemeContext);
+  const currentTheme = useContext(ThemeContext)[0];
 
     return (
       <StyledWraperExpPanel>

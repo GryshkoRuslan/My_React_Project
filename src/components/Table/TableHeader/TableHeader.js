@@ -3,7 +3,7 @@ import { TableHeaderCellStyled } from "styles/styledTableParts";
 import { ThemeContext } from "contexts/themeContext";
 
 export const TableHeader = ({ titles }) => {
-  const [currentTheme, changeTheme] = useContext(ThemeContext);
+  const currentTheme = useContext(ThemeContext)[0];
 
   return (
     <React.Fragment>

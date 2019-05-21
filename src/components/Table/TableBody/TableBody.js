@@ -3,7 +3,7 @@ import { TableBodyCellStyled } from "styles/styledTableParts";
 import { ThemeContext } from "contexts/themeContext";
 
 export const TableBody = ({ data }) => {
-  const [currentTheme, changeTheme] = useContext(ThemeContext);
+  const currentTheme = useContext(ThemeContext)[0];
 
   return data.map((row, rowIndex) => (
     <React.Fragment key={`row ${rowIndex}`}>

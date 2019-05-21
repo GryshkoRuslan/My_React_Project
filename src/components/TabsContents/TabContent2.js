@@ -14,8 +14,7 @@ export const TabContent2 = () => {
       <ChangeThemeButtonWrapper>
         {Object.keys(themes).map(theme => (
           <ChangeThemeButton
-            onClick={changeTheme}
-            value={themes[theme]}
+            onClick={() => (changeTheme(themes[theme]))}
             key={themes[theme]}
           >
             {`${theme} theme`}

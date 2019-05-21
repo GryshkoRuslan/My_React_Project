@@ -6,7 +6,7 @@ import { ExpansionPanelsLogic } from "renderProps/ExpansionPanelsLogic";
 import { ThemeContext } from "contexts/themeContext";
 
 export const TabContent0 = () => {
-  const [currentTheme, changeTheme] = useContext(ThemeContext);
+  const currentTheme = useContext(ThemeContext)[0];
 
   return (
     <StyledTabContent currentTheme={currentTheme}>

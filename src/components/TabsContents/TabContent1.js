@@ -4,7 +4,7 @@ import { Table } from "containers/Table/Table";
 import { ThemeContext } from "contexts/themeContext";
 
 export const TabContent1 = ({tableTitles, tableData}) => {
-  const [currentTheme, changeTheme] = useContext(ThemeContext);
+const currentTheme = useContext(ThemeContext)[0];
 
   return (
     <StyledTabContent currentTheme={currentTheme}>

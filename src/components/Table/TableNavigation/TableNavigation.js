@@ -14,7 +14,7 @@ export const TableNavigation = ({
   firstIndex,
   lastIndex
 }) => {
-  const [currentTheme, changeTheme] = useContext(ThemeContext);
+  const currentTheme = useContext(ThemeContext)[0];
   return (
     <StyledTableNavWrap currentTheme={currentTheme}>
       <p>
