@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import TabsWithLogic from "containers/Tabs/Tabs.js";
+import Tabs from "containers/Tabs/Tabs.js";
 
 function App() {
-  return <TabsWithLogic />;
+  return <Tabs />;
 }
 
 export default App;

@@ -10,7 +10,6 @@ import { ExpPanelContent2 } from "components/ExpPansContents/ExpPanelContent2";
 import { expPanelAttrs } from "constants/expPanelConstants";
 import { ThemeContext } from "contexts/themeContext";
 
-
 export const ExpansionPanels = ({ openedPanels, showHidePanel }) => {
   const currentTheme = useContext(ThemeContext)[0];
 

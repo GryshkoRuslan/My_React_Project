@@ -1,19 +1,24 @@
-import React, { useState } from "react";
+import { connect } from "react-redux";
+import { showHidePanel } from "actions/showHidePanels";
+import React from 'react';
 
-export const ExpansionPanelsLogic = (props) => {
-  const [openedPanels, setOpenedPanels] = useState([]);
-
-  const showHidePanel = selectedPanel => {
-    setOpenedPanels(
-      openedPanels.includes(selectedPanel)
-        ? openedPanels.filter(panel => panel !== selectedPanel)
-        : [...openedPanels, selectedPanel]
-    )
-  };
+const ExpansionPanelsLogic = (props) => {
 
   return (
     <React.Fragment>
-      {props.render(openedPanels, showHidePanel)}
+      {props.render(props.openedPanels, props.showHidePanel)}
     </React.Fragment>
   );
 };
+
+const mapStateToProps = (state) => {
+  return {
+    openedPanels: state.openedPanels
+  }
+};
+
+const mapDispatchToProps = {
+  showHidePanel: showHidePanel
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ExpansionPanelsLogic);

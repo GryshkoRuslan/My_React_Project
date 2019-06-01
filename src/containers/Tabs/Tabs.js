@@ -9,42 +9,47 @@ import { TabContent0 } from "components/TabsContents/TabContent0";
 import { TabContent1 } from "components/TabsContents/TabContent1";
 import { TabContent2 } from "components/TabsContents/TabContent2";
 import { tableTitles, tableData } from "constants/tableConstants";
-import { addTabsLogic } from "hocs/tabsLogic";
 import { ThemeContextProvider } from "contexts/themeContext";
+import { connect } from 'react-redux';
+import { changeTab } from 'actions/changeTab'
 
-const Tabs = ({
-  selectedTabLink,
-  tabNames,
-  selectTab,
-  currentTheme,
-  changeTheme
-}) => {
+const Tabs = (props) => {
+
+
   return (
     <ThemeContextProvider>
       <StyledTabsContainer>
         <TableListCont>
           {Object.keys(tabNames).map(tabName => (
             <TabLink
-              selectedtabId={selectedTabLink}
+              selectedtabId={props.selectedTabLink}
               id={tabNames[tabName]}
               key={tabNames[tabName]}
-              onClick={() => selectTab(tabNames[tabName])}
+              onClick={() => props.changeTab(tabNames[tabName])}
             >
               {`ITEM ${tabName}`}
             </TabLink>
           ))}
         </TableListCont>
 
-        {selectedTabLink === tabNames.ONE && <TabContent0 />}
-        {selectedTabLink === tabNames.TWO && (
+        {props.selectedTabLink === tabNames.ONE && <TabContent0 />}
+        {props.selectedTabLink === tabNames.TWO && (
           <TabContent1 tableTitles={tableTitles} tableData={tableData} />
         )}
-        {selectedTabLink === tabNames.THREE && <TabContent2 />}
+        {props.selectedTabLink === tabNames.THREE && <TabContent2 />}
       </StyledTabsContainer>
     </ThemeContextProvider>
   );
 };
 
-const TabsWithLogic = addTabsLogic(Tabs, tabNames);
+const mapStateToProps = (state) => {
+  return {
+    selectedTabLink: state.selectedTabLink
+  }
+}
 
-export default TabsWithLogic;
+const mapDispatchToProps = {
+  changeTab: changeTab
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Tabs);
