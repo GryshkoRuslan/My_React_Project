@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { showHidePanel } from "actions/showHidePanels";
+import { showHidePanel } from "store/modules/expansionPanels";
 import React from 'react';
 
 const ExpansionPanelsLogic = (props) => {
@@ -13,7 +13,7 @@ const ExpansionPanelsLogic = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    openedPanels: state.openedPanels
+    openedPanels: state.expansionPanels.openedPanels
   }
 };
 

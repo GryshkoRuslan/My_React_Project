@@ -11,10 +11,9 @@ import { TabContent2 } from "components/TabsContents/TabContent2";
 import { tableTitles, tableData } from "constants/tableConstants";
 import { ThemeContextProvider } from "contexts/themeContext";
 import { connect } from 'react-redux';
-import { changeTab } from 'actions/changeTab'
+import { changeTab } from 'store/modules/tabs';
 
 const Tabs = (props) => {
-
 
   return (
     <ThemeContextProvider>
@@ -44,7 +43,7 @@ const Tabs = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    selectedTabLink: state.selectedTabLink
+    selectedTabLink: state.tabs.selectedTabLink
   }
 }
 
