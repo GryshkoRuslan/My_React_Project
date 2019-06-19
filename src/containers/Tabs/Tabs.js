@@ -10,10 +10,14 @@ import { TabContent1 } from "components/TabsContents/TabContent1";
 import { TabContent2 } from "components/TabsContents/TabContent2";
 import { tableTitles, tableData } from "constants/tableConstants";
 import { ThemeContextProvider } from "contexts/themeContext";
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { changeTab } from 'store/modules/tabs';
 
-const Tabs = (props) => {
+const Tabs = () => {
+
+  const selectedTabLink = useSelector(state => state.tabs.selectedTabLink);
+  const dispatch = useDispatch();
+
 
   return (
     <ThemeContextProvider>
@@ -21,34 +25,24 @@ const Tabs = (props) => {
         <TableListCont>
           {Object.keys(tabNames).map(tabName => (
             <TabLink
-              selectedtabId={props.selectedTabLink}
+              selectedtabId={selectedTabLink}
               id={tabNames[tabName]}
               key={tabNames[tabName]}
-              onClick={() => props.changeTab(tabNames[tabName])}
+              onClick={() => dispatch(changeTab(tabNames[tabName]))}
             >
               {`ITEM ${tabName}`}
             </TabLink>
           ))}
         </TableListCont>
 
-        {props.selectedTabLink === tabNames.ONE && <TabContent0 />}
-        {props.selectedTabLink === tabNames.TWO && (
+        {selectedTabLink === tabNames.ONE && <TabContent0 />}
+        {selectedTabLink === tabNames.TWO && (
           <TabContent1 tableTitles={tableTitles} tableData={tableData} />
         )}
-        {props.selectedTabLink === tabNames.THREE && <TabContent2 />}
+        {selectedTabLink === tabNames.THREE && <TabContent2 />}
       </StyledTabsContainer>
     </ThemeContextProvider>
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    selectedTabLink: state.tabs.selectedTabLink
-  }
-}
-
-const mapDispatchToProps = {
-  changeTab: changeTab
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Tabs);
+export default Tabs;
