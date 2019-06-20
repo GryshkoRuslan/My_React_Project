@@ -17,7 +17,7 @@ const Tabs = () => {
 
   const selectedTabLink = useSelector(state => state.tabs.selectedTabLink);
   const dispatch = useDispatch();
-
+  const handleChangeTab = (tabName) => dispatch(changeTab(tabName));
 
   return (
     <ThemeContextProvider>
@@ -28,7 +28,7 @@ const Tabs = () => {
               selectedtabId={selectedTabLink}
               id={tabNames[tabName]}
               key={tabNames[tabName]}
-              onClick={() => dispatch(changeTab(tabNames[tabName]))}
+              onClick={() => handleChangeTab(tabNames[tabName])}
             >
               {`ITEM ${tabName}`}
             </TabLink>
